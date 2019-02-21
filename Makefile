@@ -37,19 +37,18 @@ static:
 
 
 clean_sw: 
-	rm -rf fc_layer hw_fc_layer conv_layer hw_conv_layer
+	@rm -rf fc_layer hw_fc_layer conv_layer hw_conv_layer
 
 clean_pr:
-	rm -rf 8v3_shell/pr_region_test_proj 
+	@rm -rf 8v3_shell/pr_region_test_proj 
 
 clean_static:
-	rm -rf 8v3_shell/mig_shell_ila_proj
+	@rm -rf 8v3_shell/mig_shell_ila_proj
 
 clean_dcp:
-	rm -rf 8v3_shell/$(DCP)
+	@rm -rf 8v3_shell/$(DCP)
 
 
 dcp: 
-	ls 8v3_shell/$(DCP) 2> /dev/null &&  echo "File exists" || (wget http://www.eecg.toronto.edu/~tarafda1/hypervisors/adm-8v3/${DCP} && mv ${DCP} 8v3_shell/) 
-       
+	@ls 8v3_shell/$(DCP) 2> /dev/null &&  echo "DCP file exists" || echo "Error: No DCP file found!"       
 

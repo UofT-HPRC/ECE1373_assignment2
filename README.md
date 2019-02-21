@@ -37,10 +37,9 @@ The Hypervisor contains the following:
 - Partial region to be programmed with partial reconfiguration, contains an AXI-Lite Slave interface to receive control information from PCIe and contains an AXI-Master interface connecting to the off-chip memory controller.
 
 **NOTE: WE HAVE CREATED THE HYPERVISOR FOR YOU AND IT CAN BE FOUND IN http://www.eecg.toronto.edu/~tarafda1/hypervisors/adm-8v3/static_routed_v1.dcp.**
-**You do not need to download it. The Makefile handles the importing of the hypervisor and building of the application for you** 
+**You do not need to download it. It should be available already but if you need it, you can find it online** 
 
 Do not create a new hypervisor as you will be sharing this FPGA with your colleagues who will be building with the same hypervisor
-The Makefile is modified to pull the DCP as needed. 
 
 
 ## Creating the Data
@@ -53,12 +52,14 @@ All of these are optional flags. The rest of the test applications assume the cu
 
 ``python nn_params/extractParams_imagenet.py``
 
+Make sure the value of total_batches (default 10) matches that in the test application.
+
 
 ## Running an Example
 
 We have provided an example with PCIe connecting to a convolution layer and an fc layer directly through PCIe. These modules are using only off-chip memory
 to communicate with the host. (is this the best way to do it?)
-We have verified functionality on both the conv and fc layer.
+We have verified functionality on both the conv and fc layer. Remember to add Vivado to the PATH, connect to the license server, and source ``sourceme.sh`` in the ECE1373_assignment2/ directory.
 
 
 ``make pr``  
@@ -73,11 +74,13 @@ Where the first argument is the partial bitstream and the second argument is the
 You can look at the generated slave_axi registers to see which offsets you need to program the control registers.
 For example for the fc look at ./hls_proj/fc_proj/solution1/impl/verilog/fc_layer_CTRL_BUS_s_axi.v
 
-Look at the Makefile to see the tests. To build for example a sample conv_layer in hardware it is. 
-make 
+Remember to create the data (see above)
+
+Look at the Makefile to see the tests. To build for example a sample conv_layer in hardware it is.
+``make hw_conv_layer``
 ``./hw_conv_layer``
 
-This writes control registers, copies data into the off-chip memory, starts the application and reads data out. 
+This writes control registers, copies data into the off-chip memory, starts the application and reads data out. Note that with the default batch number and code, this will take about 50 minutes (5 min per batch).
 
 
 ## Creating Your Own Application
