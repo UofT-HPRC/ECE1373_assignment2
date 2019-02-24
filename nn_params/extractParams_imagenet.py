@@ -191,4 +191,3 @@ for key, value in lmdb_cursor:
 	num_batch = num_batch + 1
 	    
     image_count += 1
-
