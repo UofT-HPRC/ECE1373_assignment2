@@ -1,4 +1,3 @@
-
 make_wrapper -files [get_files 8v3_shell/$projName/pr_region.srcs/sources_1/bd/pr_region_2/pr_region_2.bd] -top
 add_files -norecurse 8v3_shell/$projName/pr_region.srcs/sources_1/bd/pr_region_2/hdl/pr_region_2_wrapper.v
 update_compile_order -fileset sources_1

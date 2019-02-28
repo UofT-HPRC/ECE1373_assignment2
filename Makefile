@@ -1,5 +1,7 @@
 DCP = static_routed_v1.dcp
 PR_SRCS = conv_test/conv_layer.cpp conv_test/conv_layer.h fc_test/fc_layer.cpp fc_test/fc_layer.h 8v3_shell/create_pr2_nn.tcl 8v3_shell/create_pr2_0.tcl 8v3_shell/create_pr2_1.tcl 8v3_shell/pr_region_2_bd.tcl
+PROJNAME = pr_region_test_proj 
+
 
 
 all: conv_layer fc_layer hw_conv_layer hw_fc_layer
@@ -24,10 +26,10 @@ fc_hls: fc_test/*  util/*
 	vivado_hls hls_proj/fc_hls.tcl
 
 pr:     $(PR_SRCS) dcp conv_hls fc_hls 
-	vivado -mode batch -source 8v3_shell/create_pr2_nn.tcl -tclargs $(DCP) 
+	vivado -mode batch -source 8v3_shell/create_pr2_nn.tcl -tclargs $(DCP) $(PROJNAME)  0 
 
 pr_modify: $(PR_SRCS) dcp conv_hls fc_hls 
-	vivado -mode gui -source 8v3_shell/create_pr2_0.tcl -tclargs $(DCP)
+	vivado -mode gui -source 8v3_shell/create_pr2_nn.tcl -tclargs $(DCP) $(PROJNAME)  1
 
 
 

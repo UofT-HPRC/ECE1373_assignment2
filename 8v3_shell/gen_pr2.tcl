@@ -1,5 +1,4 @@
 
-set static_dcp [lindex $argv 0]
 
 open_checkpoint 8v3_shell/${static_dcp}
 read_checkpoint -cell static_region_i/pr_region 8v3_shell/$projName.dcp
