@@ -1,4 +1,4 @@
-create_project mig_shell 8v3_shell/test -part xcvu095-ffvc1517-2-e
+create_project mig_shell 8v3_shell/mig_shell_ila_proj -part xcvu095-ffvc1517-2-e
 set_property  ip_repo_paths  {8v3_shell/ocl_ips} [current_project]
 update_ip_catalog
 
